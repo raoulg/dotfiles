@@ -1,0 +1,23 @@
+--langdef=R
+--langmap=r:.R.r
+--regex-R=/^[ \t]*"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-|=)[ \t]function/\1/f,Functions/
+--regex-R=/^"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-)[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/g,GlobalVars/
+--regex-R=/[ \t]"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-)[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/v,FunctionVariables/
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^#{1} ([a-zA-Z0-9 -_]*)/1 \1/h,headings/
+--regex-markdown=/^#{2} ([a-zA-Z0-9 -_]*)/2 \1/h,headings/
+--regex-markdown=/^TODO ([a-zA-Z0-9 -_]*)/\1/t,todo/
+--regex-markdown=/^DONE ([a-zA-Z0-9 -_]*)/\1/d,done/
+
+--langdef=tex
+--langmap=tex:.tex
+--regex-tex=/^\\section\{([^}]*)\}/\1/s,section/
+--regex-tex=/^\\subsection\{([^}]*)\}/\1/u,subsection/
+--regex-tex=/^\\subsubsection\{([^}]*)\}/\1/t,subsubsection/
+--regex-tex=/\\label\{([^}]*)\}/\1/l,label/
+
+--langdef=bib
+--langmap=bib:.bib
+--regex-bib=/^@article\{([^,]*),/\1/e,entry/
