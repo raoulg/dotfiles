@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias as="source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 function acp() {
     git add .
     git add --all
@@ -112,14 +112,14 @@ alias mono="mono --arch=32"
 #fpath=(/usr/local/share/zsh-completions $fpath)
 alias buildsat="mcs -out:solver.exe -pkg:dotnet *.cs"
 alias runsat="mono --arch=32 solver.exe"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/z/z.sh 
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/z/z.sh 
 alias todor="find . -name '*.R' -o -name '*.Rmd' | xargs grep TODO"
 alias idear="find . -name '*.R' -o -name '*.Rmd' | xargs grep IDEA"
 alias fixr="find . -name '*.R' -o -name '*.Rmd' | xargs grep FIXME"
 alias t="todo.sh -d ~/.todo.cfg"
 alias tmux="tmux -u"
-alias ctags="`brew --prefix`/bin/ctags"
+#alias ctags="`brew --prefix`/bin/ctags"
 alias gs="git status"
 alias py2="source activate py2"
 alias py2_stop="source deactivate"
