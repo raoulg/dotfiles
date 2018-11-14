@@ -77,8 +77,8 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'kshenoy/vim-signature'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"let g:deoplete#enable_at_startup = 1
 
 " distraction free writing
 Plug 'junegunn/goyo.vim'
@@ -175,7 +175,7 @@ set expandtab
 "set sessionoptions+=folds
 set fdm=manual
 "
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 let g:UltiSnipsExpandTrigger="<tab>"
 
 

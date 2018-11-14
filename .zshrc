@@ -162,3 +162,5 @@ weekboek() {
     echo $(date "+%Y-%m-%d %H:%M") $1 >> $notefile
 }
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
