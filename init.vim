@@ -77,8 +77,8 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'kshenoy/vim-signature'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 " distraction free writing
 Plug 'junegunn/goyo.vim'
@@ -98,7 +98,7 @@ noremap <leader>fj :let g:scrollfix=50<CR>
 noremap <leader>fn :let g:scrollfix=-1<CR>
 
 Plug 'Alok/notational-fzf-vim'
-let g:nv_search_paths = ['~/org', '~/Dropbox/todo', './notes.md', '.notes.org']
+let g:nv_search_paths = ['./notes.md', '.notes.org']
 let g:nv_ignore_pattern = ['*archive']
 call plug#end()
 " Plugin settings
