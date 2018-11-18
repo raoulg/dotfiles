@@ -89,7 +89,8 @@ Plug 'bilalq/lite-dfm'
 Plug 'vim-scripts/utl.vim'
 
 " fuzzy search
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug '/home/webdev/.fzf/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'vim-scripts/scrollfix'
@@ -98,7 +99,7 @@ noremap <leader>fj :let g:scrollfix=50<CR>
 noremap <leader>fn :let g:scrollfix=-1<CR>
 
 Plug 'Alok/notational-fzf-vim'
-let g:nv_search_paths = ['./notes.md', '.notes.org']
+let g:nv_search_paths = ['~/retailforecasting', './notes.md', '.notes.org']
 let g:nv_ignore_pattern = ['*archive']
 call plug#end()
 " Plugin settings
@@ -201,6 +202,7 @@ augroup r_files
 autocmd!
 autocmd FileType r inoremap <leader>- <space><-<space>
 autocmd FileType r inoremap <leader>p <space>%>%
+autocmd FileType r set tabstop=4 softtabstop=2 shiftwidth=2
 augroup END
 
 "autocmd FileType r :iabbrev <buffer> func function() {}<left><CR><CR><esc>:norm kf(a<CR>
