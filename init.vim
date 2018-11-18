@@ -31,6 +31,7 @@ Plug 'jalvesaq/Nvim-R'
 let R_term = 'iTerm'
 " exit terminal and move to the upper window
 tnoremap <C-k> <C-\><C-n><C-w>k
+Plug 'chrisbra/csv.vim'
 
 Plug 'ncm2/ncm2'
 Plug 'gaalcaras/ncm-R'
@@ -40,6 +41,18 @@ let g:tagbar_show_linenumbers=2
 
 Plug 'skwp/vim-easymotion'
 let g:EasyMotion_leader_key = '\'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+let g:rainbow_conf = {
+\    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\    'ctermfgs': ['lightblue', 'lightyellow', 'lightgreen', 'lightmagenta', 'darkred'],
+\    'operators': '_,_',
+\    'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\    'separately': {
+\        '*': {},
+\    }
+\}
 
 Plug 'mileszs/ack.vim'
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
@@ -116,6 +129,7 @@ filetype plugin indent on
 
 set cursorline
 set colorcolumn=80
+highlight ColorColumn ctermbg=9 guibg=LightBlue
 
 fun! SyntasticToggleQuiet(k, v)
   let idx = index(g:syntastic_quiet_messages[a:k], a:v)
@@ -201,6 +215,7 @@ augroup r_files
 autocmd!
 autocmd FileType r inoremap <leader>- <space><-<space>
 autocmd FileType r inoremap <leader>p <space>%>%
+autocmd FileType r set tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 "autocmd FileType r :iabbrev <buffer> func function() {}<left><CR><CR><esc>:norm kf(a<CR>
