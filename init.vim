@@ -129,8 +129,10 @@ filetype plugin indent on
 "let g:nd_timeshift = '40'
 
 set cursorline
+"highlight ColorColumn ctermbg=DarkRed
 set colorcolumn=80
-highlight ColorColumn ctermbg=9 guibg=LightBlue
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 fun! SyntasticToggleQuiet(k, v)
   let idx = index(g:syntastic_quiet_messages[a:k], a:v)
@@ -284,7 +286,7 @@ let g:tagbar_type_bib = {
             \]
             \}
 
-function Getparams()
+function! Getparams()
     let s:start = line('.')
     let s:end = search("{")
     if stridx(getline(s:end),"{") == 0
@@ -322,7 +324,7 @@ function Getparams()
     return alist
 endfunction
 
-function  Rdoc()
+function!  Rdoc()
     let s:wd=expand("")
     let s:lineNo=line('.')-1
     let plist=Getparams()
