@@ -131,8 +131,8 @@ filetype plugin indent on
 set cursorline
 "highlight ColorColumn ctermbg=DarkRed
 set colorcolumn=80
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 fun! SyntasticToggleQuiet(k, v)
   let idx = index(g:syntastic_quiet_messages[a:k], a:v)
