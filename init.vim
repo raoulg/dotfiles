@@ -177,12 +177,8 @@ filetype plugin indent on
 set cursorline
 "highlight ColorColumn ctermbg=DarkRed
 set colorcolumn=80
-<<<<<<< HEAD
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
-=======
-"highlight ColorColumn ctermbg=9 guibg=LightBlue
->>>>>>> master
 
 " toggle for syntaxchecker
 fun! SyntasticToggleQuiet(k, v)
@@ -250,15 +246,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set fdm=manual
-<<<<<<< HEAD
-"
-let g:python3_host_prog = '/usr/bin/python3'
-let g:UltiSnipsExpandTrigger="<tab>"
-=======
->>>>>>> master
 
 " python env
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 augroup python_files
 autocmd!
@@ -350,10 +340,7 @@ let g:tagbar_type_bib = {
             \]
             \}
 
-<<<<<<< HEAD
-=======
 " code to create roxygen frameworks in R functions
->>>>>>> master
 function! Getparams()
     let s:start = line('.')
     let s:end = search("{")
