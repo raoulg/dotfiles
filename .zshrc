@@ -125,6 +125,7 @@ alias tmux="tmux -u"
 alias gs="git status"
 alias py2="source activate py2"
 alias py2_stop="source deactivate"
+alias lst="ls -tlh"
 
 KEYTIMEOUT=1
 
