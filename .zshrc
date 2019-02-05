@@ -110,9 +110,10 @@ alias jrnl=" jrnl"
 alias hg="history | ag "
 alias mono="mono --arch=32"
 #fpath=(/usr/local/share/zsh-completions $fpath)
-alias buildsat="mcs -out:solver.exe -pkg:dotnet *.cs"
-alias runsat="mono --arch=32 solver.exe"
+alias buildc="mcs -out:main.exe -pkg:dotnet *.cs"
+alias runc="mono --arch=32 *.exe"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[globbing]='none'
 source /usr/local/share/z/z.sh
 alias todor="find . -name '*.R' -o -name '*.Rmd' | xargs grep TODO"
 alias idear="find . -name '*.R' -o -name '*.Rmd' | xargs grep IDEA"
