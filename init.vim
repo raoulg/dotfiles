@@ -29,6 +29,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" vimdiff
+Plug 'rickhowe/diffchar.vim'
+"noremap <leader>d <ESC>:windo diffthis \| windo set wrap<CR> 
+nnoremap <silent> <Leader>d :call DiffToggle()<CR>
+
+function! DiffToggle()
+    if &diff
+        diffoff
+    else
+        windo diffthis
+        windo set wrap
+    endif
+endfunction
+
 " toggle showing of warnings or errors
 nnoremap <leader>e :SyntasticToggleMode<CR>
 nnoremap <leader>ew :SyntasticToggleWarnings<CR>
@@ -51,8 +66,8 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 Plug 'chrisbra/csv.vim'
 
 " auto completion
-Plug 'ncm2/ncm2'
-Plug 'gaalcaras/ncm-R'
+"Plug 'ncm2/ncm2'
+"Plug 'gaalcaras/ncm-R'
 
 " tags (icm with ctags) 
 Plug 'majutsushi/tagbar'
@@ -83,9 +98,11 @@ noremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
 " save windowconfiguration
-Plug 'thaerkh/vim-workspace'
-nnoremap <leader>w :ToggleWorkspace<CR>
-
+"Plug 'thaerkh/vim-workspace'
+"nnoremap <leader>w :ToggleWorkspace<CR>
+Plug 'tpope/vim-obsession'
+" Use :Obsess (with optional file/directory name)
+"
 " nice airline theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -116,6 +133,7 @@ let g:bullets_enabled_file_types = [
 " more themes
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
+Plug 'NLKNguyen/papercolor-theme' " PaperColor
 
 " C#
 Plug 'OmniSharp/omnisharp-vim'
@@ -134,8 +152,8 @@ Plug 'tpope/vim-surround'
 Plug 'kshenoy/vim-signature'
 
 " completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"let g:deoplete#enable_at_startup = 0
 
 " different distraction free writing plugins
 Plug 'junegunn/goyo.vim'
@@ -143,7 +161,7 @@ Plug 'jacekd/vim-iawriter'
 Plug 'junegunn/limelight.vim'
 Plug 'bilalq/lite-dfm'
 noremap <leader>l :Limelight!!<CR>
-noremap <leader>g :Goyo<CR>
+"noremap <leader>g :Goyo<CR>
 noremap <leader>z :LiteDFMToggle<CR>
 " keep cursor away from top or bottom
 set scrolloff=7
@@ -174,7 +192,7 @@ filetype plugin indent on
 
 " vertical and horizontal line
 set cursorline
-set colorcolumn=80
+"set colorcolumn=80
 "highlight ColorColumn ctermbg=9 guibg=LightBlue
 
 " toggle for syntaxchecker
@@ -221,6 +239,7 @@ nnoremap L $
 
 " write file
 inoremap <leader><leader> <Esc>:w<CR> 
+nnoremap <leader><leader> :w<CR> 
 
 " remap movement for multiline navigation
 nnoremap <expr> j v:count ? 'j' : 'gj'
@@ -229,16 +248,30 @@ nnoremap <C-j> j
 nnoremap <C-k> k
 
 " let return create a blank line
-noremap <CR> o<Esc>
-noremap <S-Enter> O<Esc>
+nnoremap <CR> o<Esc>
+nnoremap <S-Enter> O<Esc>
 
 " change pwd to current file's dir
 noremap <leader>cd :cd %:p:h<CR>
 
 "" theme
 colorscheme badwolf
+"colorscheme PaperColor
+" set background=light
+"
+function! ToggleBackground()
+  if &background == "dark"
+    colorscheme PaperColor
+    set background=light
+	else
+    colorscheme badwolf
+		set background=dark
+	endif	
+endfunction
+noremap <Leader>b :call ToggleBackground() <CR>
 
 "" tabs, folding
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -265,13 +298,15 @@ autocmd!
 " better folding for text files
 autocmd FileType org,markdown,tex set fdm=manual
 autocmd Filetype tex setlocal nofoldenable
+"autocmd BufNew, BufNewFile, BufRead *.tex set filetype=tex
 augroup END
+let g:tex_flavor='latex'
 
 " R
 augroup r_files
 autocmd!
-autocmd FileType r inoremap <leader>- <space><-<space>
-autocmd FileType r inoremap <leader>p <space>%>%
+autocmd FileType r inoremap – <space><-<space>
+autocmd FileType r inoremap π <space>%>%
 autocmd FileType r set tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 let R_assign_map = '<A-->'
@@ -296,6 +331,7 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 
 " configuration for tags
 set tags=./tags
@@ -394,5 +430,6 @@ function!  Rdoc()
     call append(s:lineNo + 4 + s:idx + 2,"#' @examples ")
     call append(s:lineNo + 4 + s:idx + 3,"#' x=c(1,2,3) ")
 endfunction
+
 
 nnoremap <F3> :call Rdoc() <CR>
