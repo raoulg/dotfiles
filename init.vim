@@ -235,6 +235,8 @@ nnoremap <C-k> k
 noremap <CR> o<Esc>
 noremap <S-Enter> O<Esc>
 
+vnoremap <leader>vc y<c-w>wp<c-w>pgv
+
 " change pwd to current file's dir
 noremap <leader>cd :cd %:p:h<CR>
 
