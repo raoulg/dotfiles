@@ -11,6 +11,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " a theme
 Plug 'nightsense/simplifysimplify'
 
+"Plug 'adimit/prolog.vim'
 " latex support
 Plug 'vim-latex/vim-latex'
 let g:Tex_MultipleCompileFormats='pdf,bib,pdf'
@@ -55,6 +56,8 @@ Plug 'cjrh/vim-conda' " conda integration
 " use as CondaChangeEnv
 
 " R environment
+let maplocalleader = ";"
+let R_insert_mode_cmds = 1
 Plug 'jalvesaq/Nvim-R'
 let R_term = 'iTerm'
 " shortcuts to leave the R terminal in Nvim-R
@@ -76,7 +79,7 @@ let g:tagbar_show_linenumbers=2
 
 " rainbow colors for matching parentheses
 Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
 " configuration for colors
 let g:rainbow_conf = {
 \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -293,12 +296,30 @@ autocmd BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 |
     nnoremap <buffer> <leader>fo za
 augroup END
 
-augroup note_files
+augroup csharp_files
+  autocmd!
+  autocmd BufNewFile,BufRead *.cs set tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType cs nnoremap <buffer> <leader>bb : exec '!mcs -out:main.exe -pkg:dotnet *.cs'<cr>
+  autocmd FileType cs set fdm=indent
+  autocmd Filetype cs inoremap <buffer> { {<cr>}<esc>O 
+  "}
+  "autocmd FileType cs nnoremap <buffer> <leader>r : exec '!mono --arch=32 *.exe' <cr>
+augroup END
+
+augroup prolog_files
+  autocmd!
+  autocmd FileType prolog inoremap <leader>i <space>:-<space>
+  autocmd FileType prolog inoremap <leader>l [H\|T]
+  autocmd FileType prolog inoremap <leader>L [<++>\|<++>]
+augroup END
+
+augroup textfiles
 autocmd!
 " better folding for text files
 autocmd FileType org,markdown,tex set fdm=manual
 autocmd Filetype tex setlocal nofoldenable
 "autocmd BufNew, BufNewFile, BufRead *.tex set filetype=tex
+autocmd FileType tex inoremap <buffer> <leader>en \begin{enumerate}<cr>\item <++><cr>\end{enumerate}<esc>kk<c-s>
 augroup END
 let g:tex_flavor='latex'
 

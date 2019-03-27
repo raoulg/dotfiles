@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export PATH="$HOME/anaconda3/bin:$PATH"
+export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -125,6 +126,7 @@ alias gs="git status"
 alias py2="source activate py2"
 alias py2_stop="source deactivate"
 alias lst="ls -tlh"
+alias swipl="rlwrap swipl"
 
 KEYTIMEOUT=1
 
