@@ -257,6 +257,7 @@ nnoremap <S-Enter> O<Esc>
 " change pwd to current file's dir
 noremap <leader>cd :cd %:p:h<CR>
 
+vnoremap <leader>vc y<c-w>wp<c-w>pgv
 "" theme
 colorscheme badwolf
 "colorscheme PaperColor
