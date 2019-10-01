@@ -164,8 +164,9 @@ Plug 'jacekd/vim-iawriter'
 Plug 'junegunn/limelight.vim'
 Plug 'bilalq/lite-dfm'
 noremap <leader>l :Limelight!!<CR>
-"noremap <leader>g :Goyo<CR>
+noremap <leader>g :Goyo<CR>
 noremap <leader>z :LiteDFMToggle<CR>
+let g:lite_dfm_left_offset = 0
 " keep cursor away from top or bottom
 set scrolloff=7
 
@@ -181,7 +182,7 @@ Plug 'junegunn/fzf.vim'
 " fix center of document
 Plug 'vim-scripts/scrollfix'
 let g:scrollfix=-1
-noremap <leader>fj :let g:scrollfix=50<CR>
+noremap <leader>fj :let g:scrollfix=40<CR>
 noremap <leader>fn :let g:scrollfix=-1<CR>
 
 " fast notetaking
@@ -257,7 +258,10 @@ nnoremap <S-Enter> O<Esc>
 " change pwd to current file's dir
 noremap <leader>cd :cd %:p:h<CR>
 
-vnoremap <leader>vc y<c-w>wp<c-w>pgv
+" copy selection to other window
+vnoremap <leader>vc y<c-w>wpG<c-w>pgv
+" copy visual selection to other window
+vnoremap <leader>vx d<c-w>wpG<c-w>p
 "" theme
 colorscheme badwolf
 "colorscheme PaperColor
@@ -302,7 +306,7 @@ augroup csharp_files
   autocmd BufNewFile,BufRead *.cs set tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType cs nnoremap <buffer> <leader>bb : exec '!mcs -out:main.exe -pkg:dotnet *.cs'<cr>
   autocmd FileType cs set fdm=indent
-  autocmd Filetype cs inoremap <buffer> { {<cr>}<esc>O 
+  autocmd Filetype cs inoremap <buffer> {{ {<cr>}<esc>O 
   "}
   "autocmd FileType cs nnoremap <buffer> <leader>r : exec '!mono --arch=32 *.exe' <cr>
 augroup END
@@ -340,14 +344,14 @@ set nu
 
 function! s:goyo_enter()
     set relativenumber
-    set scrolloff=99
+    "set scrolloff=999
     Limelight
     " ...
 endfunction
 
 function! s:goyo_leave()
    Limelight!
-   set scrolloff=7
+   "set scrolloff=7
    " ...
 endfunction
 

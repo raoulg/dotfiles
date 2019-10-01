@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export PATH="$HOME/anaconda3/bin:$PATH"
+#export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -106,27 +106,33 @@ function acp() {
     git commit -m "$1"
     git push
 }
+alias gs="git status"
 setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
 alias hg="history | ag "
+
 alias mono="mono --arch=32"
 #fpath=(/usr/local/share/zsh-completions $fpath)
 alias buildc="mcs -out:main.exe -pkg:dotnet *.cs"
 alias runc="mono --arch=32 *.exe"
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 source /usr/local/share/z/z.sh
+
 alias todor="find . -name '*.R' -o -name '*.Rmd' | xargs grep TODO"
 alias idear="find . -name '*.R' -o -name '*.Rmd' | xargs grep IDEA"
 alias fixr="find . -name '*.R' -o -name '*.Rmd' | xargs grep FIXME"
+
 alias t="todo.sh -d ~/.todo.cfg"
 alias tmux="tmux -u"
 alias ctags="`brew --prefix`/bin/ctags"
-alias gs="git status"
-alias py2="source activate py2"
-alias py2_stop="source deactivate"
+
+
+alias activate="source ~/miniconda3/bin/activate"
+alias deactivate="conda deactivate"
+
 alias lst="ls -tlh"
-alias swipl="rlwrap swipl"
 
 KEYTIMEOUT=1
 
@@ -157,11 +163,6 @@ export LC_ALL=en_US.UTF-8
 
 portfolio() {
     notefile=~/Dropbox/KI/honours/portfolio.md
-    echo $(date "+%Y-%m-%d %H:%M") $1 >> $notefile
-}
-
-weekboek() {
-    notefile=~/Dropbox/KI/hon2/weekboek.md
     echo $(date "+%Y-%m-%d %H:%M") $1 >> $notefile
 }
 
