@@ -7,6 +7,7 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowLineNumbers=1 "nerdtree linenumbers
 noremap <leader>n :NERDTreeToggle<CR>
+tnoremap <Esc> <C-\><C-n>
 let NERDTreeQuitOnOpen=1
 
 
