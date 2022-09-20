@@ -107,7 +107,7 @@ local keymap = {
 		v = {'<Cmd>vsp ~/.config/nvim/init.vim<CR>' , 'edit vimrc'},
 		z = {'<Cmd>vsp ~/.zshrc<CR>', 'edit zshrc'},
 		p = {'<Cmd>PlugInstall<CR>', 'plug install'},
-		s = {'<Cmd>source ~/.config/nvim/init.vim<CR>}', 'source init.vim'},
+		s = {'<Cmd>source ~/.config/nvim/init.vim<CR>', 'source init.vim'},
 	},
 
 	w = {
@@ -169,7 +169,6 @@ local keymap = {
     }
 }
 
-require("nvim-tree").setup()
 local wk = require('whichkey_setup')
 wk.register_keymap('leader', keymap)
 
